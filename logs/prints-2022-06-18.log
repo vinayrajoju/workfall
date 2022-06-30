@@ -1,0 +1,8 @@
+16:12:42.848 [main] DEBUG workfall.Login - client logged in successfully..
+16:13:27.416 [main] DEBUG workfall.TestBase.App - chrome browser is initializing
+16:13:34.475 [main] DEBUG workfall.Login - email entered
+16:13:34.530 [main] DEBUG workfall.Login - password entered
+16:13:40.862 [main] DEBUG workfall.Login - client logged in successfully..
+17:56:44.401 [main] DEBUG workfall.TestBase.App - chrome browser is initializing
+17:56:48.317 [main] DEBUG workfall.Login - email entered
+17:56:48.385 [main] DEBUG workfall.Login - password entered

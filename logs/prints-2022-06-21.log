@@ -1,0 +1,5 @@
+15:19:10.133 [main] INFO  workfall.Client - Selecting WireTransfer Payment
+15:19:12.508 [main] INFO  workfall.Client - Invoice downloaded
+15:19:20.194 [main] INFO  workfall.Client - Your payment has been submitted. We will update the status of your Workstream as soon as we receive confirmation from the bank, which can take up to 12-18 business hours.
+15:19:20.765 [main] DEBUG workfall.TestBase.App - chrome browser is initializing
+15:20:42.441 [main] DEBUG workfall.TestBase.App - chrome browser is initializing

@@ -1,0 +1,7 @@
+22:02:37.437 [main] DEBUG workfall.TestBase.App - Selecting slot 2
+22:02:46.307 [main] DEBUG workfall.TestBase.App - Selecting slot 3
+22:04:18.042 [main] DEBUG workfall.TestBase.App - chrome browser is initializing
+22:04:25.461 [main] DEBUG workfall.TestBase.App - email entered
+22:04:25.526 [main] DEBUG workfall.TestBase.App - password entered
+22:04:29.678 [main] DEBUG workfall.TestBase.App - partner logged in successfully..
+22:04:49.957 [main] DEBUG workfall.TestBase.App - chrome browser is initializing

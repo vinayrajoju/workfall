@@ -1,0 +1,8 @@
+/home/thrymr/.jenkins/workspace/Workfall_SmokeTest/src/main/java/workfall/Utils/EmailSendUtils.java
+/home/thrymr/.jenkins/workspace/Workfall_SmokeTest/src/main/java/workfall/TestBase/App.java
+/home/thrymr/.jenkins/workspace/Workfall_SmokeTest/src/main/java/workfall/Data/Data.java
+/home/thrymr/.jenkins/workspace/Workfall_SmokeTest/src/main/java/workfall/TestBase/Incognito.java
+/home/thrymr/.jenkins/workspace/Workfall_SmokeTest/src/main/java/workfall/Data/GetData.java
+/home/thrymr/.jenkins/workspace/Workfall_SmokeTest/src/main/java/workfall/Mail_API/SendEmail.java
+/home/thrymr/.jenkins/workspace/Workfall_SmokeTest/src/main/java/workfall/Utils/ConfigLoader.java
+/home/thrymr/.jenkins/workspace/Workfall_SmokeTest/src/main/java/workfall/Mail_API/EmailConfig.java
