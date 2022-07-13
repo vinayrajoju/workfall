@@ -1,0 +1,4 @@
+15:31:46.684 [main] DEBUG com.workfall.base.TestBase - Opening Chrome browser
+15:31:54.326 [main] DEBUG ClientTest3 - Selecting Slot1
+15:32:00.039 [main] DEBUG ClientTest3 - Selecting Slot2
+15:32:05.738 [main] DEBUG ClientTest3 - Selecting Slot3
