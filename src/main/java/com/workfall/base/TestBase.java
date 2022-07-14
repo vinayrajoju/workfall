@@ -1,9 +1,5 @@
 package com.workfall.base;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.workfall.utils.TestUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
@@ -16,8 +12,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,10 +26,9 @@ public class TestBase {
 	public static WebDriver driver;
 	public static Properties prop;
 	public static WebDriverWait wait;
-	public ExtentHtmlReporter htmlReporter;
-	public ExtentReports extent;
-	ExtentTest test;
-
+//	public ExtentHtmlReporter htmlReporter;
+//	public ExtentReports extent;
+//	public static ExtentTest test;
 	private static Logger log = LogManager.getLogger(TestBase.class.getName());
 
 
@@ -56,23 +49,23 @@ public class TestBase {
 			e.printStackTrace();
 		}
 	}
-	@BeforeSuite
-	public void setUp(){
-		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/Reports/myReport.html");
-		htmlReporter.config().setDocumentTitle("Automation Report"); // Tile of report
-		htmlReporter.config().setReportName("Smoke Testing"); // Name of the report
-		htmlReporter.config().setTheme(Theme.DARK);
-		// create ExtentReports and attach reporter(s)
-		extent = new ExtentReports();
-		extent.attachReporter(htmlReporter);
+//	@BeforeSuite
+//	public void setUp(){
+//		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/Reports/myReport.html");
+//		htmlReporter.config().setDocumentTitle("Automation Report"); // Tile of report
+//		htmlReporter.config().setReportName("Smoke Testing"); // Name of the report
+//		htmlReporter.config().setTheme(Theme.DARK);
+//		// create ExtentReports and attach reporter(s)
+//		extent = new ExtentReports();
+//		extent.attachReporter(htmlReporter);
+//		test = extent.createTest("TestCase1","BookRequest with partner for 42 Hrs");
+//
+//	}
 
-
-	}
-
-	@AfterSuite
-	public void endReport(){
-		extent.flush();
-	}
+//	@AfterSuite
+//	public void endReport(){
+//		extent.flush();
+//	}
 
 	public static void Initialize() throws IOException {
 
@@ -111,6 +104,29 @@ public class TestBase {
 	public void close(){
 		driver.close();
 	}
+
+//	public void close(){
+//		public void tearDown(ITestResult result) {
+//			// checking if the test method failed
+//			if (result.getStatus() == ITestResult.FAILURE) {
+//				// get screenshot using the utility method and save the location of the screenshot
+//				String screenshotLocation = getScreenshotPath(result.getName());
+//
+//				// capture the name of test method
+//				extentLogger.fail(result.getName());
+//
+//				// add the screenshot to the report
+//				extentLogger.addScreenCaptureFromPath(screenshotLocation);
+//
+//				// capture the exception thrown
+//				extentLogger.fail(result.getThrowable());
+//
+//			} else if (result.getStatus() == ITestResult.SKIP) {
+//				extentLogger.skip("Test Case Skipped is " + result.getName());
+//			}
+//			driver.close();
+//		}
+//	}
 
 	public void getScreenshotPath(String testCaseName) throws IOException {
 

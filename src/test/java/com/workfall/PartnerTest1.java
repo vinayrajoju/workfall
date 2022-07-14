@@ -1,5 +1,6 @@
 package com.workfall;
 
+import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.workfall.base.TestBase;
@@ -9,6 +10,7 @@ import com.workfall.pages.Workstreampage;
 import com.workfall.pages.partnerpages.HomePage;
 import com.workfall.pages.partnerpages.PartnerLoginPage;
 import com.workfall.pages.partnerpages.SuccessPopupPage;
+import com.workfall.utils.ExtentManager;
 import com.workfall.utils.TestUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,6 +30,7 @@ public class PartnerTest1 extends TestBase {
     ConfirmationPopupPage confirmPage;
     SuccessPopupPage successPopupPage;
     GetData data;
+    ExtentReports reports;
     ExtentTest test;
 
 
@@ -42,6 +45,8 @@ public class PartnerTest1 extends TestBase {
     {
 
         Initialize();
+        reports=ExtentManager.getReports();
+        test = reports.createTest("TestCase2","Accepting the ClientRequest");
         partnerLoginPage = new PartnerLoginPage();
         homePage = new HomePage();
         workstreamPage = new Workstreampage();
@@ -50,10 +55,10 @@ public class PartnerTest1 extends TestBase {
         data = new GetData();
 
     }
-    @Test
+    @Test(priority = 2)
     public void acceptRequest() throws InterruptedException, IOException {
 
-       test = extent.createTest("TestCase2","Accepting the ClientRequest");
+       //test = extent.createTest("TestCase2","Accepting the ClientRequest");
        homePage = partnerLoginPage.partnerLogin(prop.getProperty("partnerId"), prop.getProperty("partnerPwd"));
        test.log(Status.INFO,"Partner logged in successfully");               //log.info("Partner logged in successfully");
        homePage.requests.click();
@@ -67,5 +72,6 @@ public class PartnerTest1 extends TestBase {
     @AfterMethod
     public void teardown(){
         close();
+        reports.flush();
     }
 }

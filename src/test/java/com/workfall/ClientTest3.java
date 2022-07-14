@@ -1,5 +1,6 @@
 package com.workfall;
 
+import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.workfall.base.TestBase;
@@ -9,6 +10,7 @@ import com.workfall.pages.clientpages.CallSchedulePage;
 import com.workfall.pages.clientpages.ClientLoginPage;
 import com.workfall.pages.clientpages.DashboardPage;
 import com.workfall.pages.clientpages.SuccessMessagePage;
+import com.workfall.utils.ExtentManager;
 import com.workfall.utils.TestUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,6 +30,7 @@ public class ClientTest3 extends TestBase {
     TestUtil util;
     GetData data;
     ExtentTest test;
+    ExtentReports reports;
 
     public ClientTest3()
     {
@@ -37,6 +40,8 @@ public class ClientTest3 extends TestBase {
     public void setup() throws IOException {
 
         Initialize();
+        reports= ExtentManager.getReports();
+        test = reports.createTest("TestCase4","Scheduling a Call with partner");
         clientLoginPage = new ClientLoginPage();
         dashboardPage = new DashboardPage();
         callSchedulePage = new CallSchedulePage();
@@ -47,7 +52,6 @@ public class ClientTest3 extends TestBase {
     }
     @Test(priority = 3)
     public void scheduleCall() throws InterruptedException, IOException {
-        test = extent.createTest("TestCase4","Scheduling a Call with partner");
         clientLoginPage.clientLogin(prop.getProperty("clientId"), prop.getProperty("clientPwd"));
         dashboardPage.navigateSchedule();
         callSchedulePage.setSelectpartner(data.getPartnerName());

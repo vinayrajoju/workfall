@@ -1,11 +1,13 @@
 package com.workfall;
 
+import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.workfall.base.TestBase;
 import com.workfall.data.GetData;
 import com.workfall.pages.clientpages.CardsPage;
 import com.workfall.pages.clientpages.ClientLoginPage;
 import com.workfall.pages.clientpages.SettingsPage;
+import com.workfall.utils.ExtentManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterMethod;
@@ -21,6 +23,7 @@ public class ClientTest5 extends TestBase {
     CardsPage cardsPage;
     GetData data;
     ExtentTest test;
+    ExtentReports reports;
 
     public ClientTest5(){
         super();
@@ -29,6 +32,8 @@ public class ClientTest5 extends TestBase {
     public void setup() throws IOException
     {
         Initialize();
+        reports= ExtentManager.getReports();
+        test = reports.createTest("TestCase5","Adding Card Details");
         clientLoginPage = new ClientLoginPage();
         settingsPage = new SettingsPage();
         cardsPage = new CardsPage();
@@ -37,7 +42,6 @@ public class ClientTest5 extends TestBase {
 
     @Test(priority = 4)
     public void addingCard() throws InterruptedException, IOException {
-        test = extent.createTest("TestCase5","Adding Card Details");
         clientLoginPage.clientLogin(prop.getProperty("clientId"), prop.getProperty("clientPwd") );
         settingsPage.navigateSettings();
         settingsPage.navigateSavedCards();

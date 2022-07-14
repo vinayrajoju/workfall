@@ -1,5 +1,6 @@
 package com.workfall;
 
+import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.workfall.base.TestBase;
@@ -10,6 +11,7 @@ import com.workfall.pages.clientpages.ClientLoginPage;
 import com.workfall.pages.clientpages.ConfirmBookingRequestPage;
 import com.workfall.pages.clientpages.DashboardPage;
 import com.workfall.pages.clientpages.PartnersPage;
+import com.workfall.utils.ExtentManager;
 import com.workfall.utils.TestUtil;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -30,6 +32,7 @@ public class ClientTest1 extends TestBase {
     TestUtil testUtil = new TestUtil();
     GetData data;
     ExtentTest test;
+    ExtentReports reports;
 
 
 
@@ -41,6 +44,8 @@ public class ClientTest1 extends TestBase {
     public void setup() throws IOException
     {
         Initialize();
+        reports= ExtentManager.getReports();
+        test = reports.createTest("TestCase1","BookRequest with partner "+data.getPartnerName()+" for "+data.getBookingHours()+"Hrs");
         clientLoginPage = new ClientLoginPage();
         dashboardPage = new DashboardPage();
         partnersPage = new PartnersPage();
@@ -52,7 +57,6 @@ public class ClientTest1 extends TestBase {
 
     @Test(priority = 1)
     public void bookRequest() throws InterruptedException, IOException {
-        test = extent.createTest("TestCase1","BookRequest with partner "+data.getPartnerName()+" for "+data.getBookingHours()+"Hrs");
         dashboardPage = clientLoginPage.clientLogin(prop.getProperty("clientId"), prop.getProperty("clientPwd"));
         test.log(Status.INFO,"Logged in Successfully");                                     //log.debug("Logged in successfully");
         partnersPage = dashboardPage.partnersMenu();
@@ -68,6 +72,7 @@ public class ClientTest1 extends TestBase {
     @AfterMethod
     public void teardown(){
         close();
+        reports.flush();
     }
 
 

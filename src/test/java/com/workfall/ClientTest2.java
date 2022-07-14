@@ -1,11 +1,13 @@
 package com.workfall;
 
+import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.workfall.base.TestBase;
 import com.workfall.data.GetData;
 import com.workfall.pages.ConfirmationPopupPage;
 import com.workfall.pages.clientpages.*;
+import com.workfall.utils.ExtentManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterMethod;
@@ -26,6 +28,7 @@ public class ClientTest2 extends TestBase {
     SuccessMessagePage successMessagePage;
     GetData data;
     ExtentTest test;
+    ExtentReports reports;
 
 
     public ClientTest2()
@@ -36,6 +39,8 @@ public class ClientTest2 extends TestBase {
     public void setup() throws IOException {
 
         Initialize();
+        reports= ExtentManager.getReports();
+        test = reports.createTest("TestCase3","WireTranfer payment for Contract");
         clientLoginPage = new ClientLoginPage();
         dashboardPage = new DashboardPage();
         paymentPage = new PaymentPage();
@@ -47,7 +52,6 @@ public class ClientTest2 extends TestBase {
 
     @Test(priority = 2)
     public void payment() throws InterruptedException, IOException {
-        test = extent.createTest("TestCase3","WireTranfer payment for Contract");
         clientLoginPage.clientLogin(prop.getProperty("clientId"), prop.getProperty("clientPwd") );
         test.log(Status.INFO,"Client logged in Successfully");
         dashboardPage.requests.click();
@@ -63,5 +67,6 @@ public class ClientTest2 extends TestBase {
     @AfterMethod
     public void teardown(){
         close();
+
     }
 }
